@@ -7,33 +7,23 @@ import java.util.StringTokenizer;
 import java.io.BufferedReader;
 
 
-public class CF164A {
+public class BuyAShovel {
     public static void main(String[] args) {
         InputStream InputStream = System.in;
         OutputStream OutputStream = System.out;
         InputReader in = new InputReader(InputStream);
         PrintWriter out = new PrintWriter(OutputStream);
 
-        int n = in.nextInt();
-
-        int[] home = new int[n];
-        int[] away = new int[n];
- 
-        int result = 0;
-
-        for(int i = 0;i<n;i++) {
-            home[i] = in.nextInt();
-            away[i] = in.nextInt();
-        }
-
-        for(int i = 0;i<n;i++) {
-            for(int j = 0;j<n;j++) {
-                if(away[i] == home[j])
-                    result++;
+        int k = in.nextInt();
+        int r = in.nextInt();
+        
+        for(int x = 1;x<=9;x++) {
+            if((x*k)%10 == r || (x*k)%10 == 0) {
+                out.print(x);
+                out.close();
+                return;
             }
         }
-
-        out.print(result);
         
         out.close();
     }
@@ -64,3 +54,6 @@ public class CF164A {
  
     }
 }
+
+
+

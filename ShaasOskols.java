@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 import java.io.BufferedReader;
 
 
-public class CF164A {
+public class ShaasOskols {
     public static void main(String[] args) {
         InputStream InputStream = System.in;
         OutputStream OutputStream = System.out;
@@ -15,25 +15,28 @@ public class CF164A {
         PrintWriter out = new PrintWriter(OutputStream);
 
         int n = in.nextInt();
+        int[] birds = new int[n];
 
-        int[] home = new int[n];
-        int[] away = new int[n];
- 
-        int result = 0;
+        for(int i = 0;i<n;i++)
+            birds[i] = in.nextInt();
 
-        for(int i = 0;i<n;i++) {
-            home[i] = in.nextInt();
-            away[i] = in.nextInt();
+        int t = in.nextInt();
+
+        while(t-->0) {
+            int x = in.nextInt();
+            int y = in.nextInt();
+
+            if(x!=1)
+                birds[x-2]+=y-1;
+            if(x!=n)
+                birds[x]=birds[x]+birds[x-1]-y;
+            
+            birds[x-1] = 0;
         }
 
-        for(int i = 0;i<n;i++) {
-            for(int j = 0;j<n;j++) {
-                if(away[i] == home[j])
-                    result++;
-            }
-        }
+        for(int i = 0;i<n;i++)
+            out.println(birds[i]);
 
-        out.print(result);
         
         out.close();
     }
@@ -64,3 +67,27 @@ public class CF164A {
  
     }
 }
+
+// Good Solution
+
+// #include<iostream>
+// #include<algorithm>
+// using namespace std;
+// int main(){
+// 	int n,m,a[101]={0};
+// 	int x,y,i;
+// 	cin>>n;
+// 	for(i=1;i<=n;i++)
+// 		cin>>a[i];
+// 	cin>>m;
+// 	for(i=1;i<=m;i++){
+// 		cin>>x>>y;
+// 		a[x-1]+=y-1;
+// 		a[x+1]+=a[x]-y;
+// 		a[x]=0;
+// 	}
+// 	for(i=1;i<=n;i++)
+// 		cout<<a[i]<<endl;
+// 	return 0;
+// }
+

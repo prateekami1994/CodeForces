@@ -7,35 +7,32 @@ import java.util.StringTokenizer;
 import java.io.BufferedReader;
 
 
-public class CF164A {
+public class DieRoll {
     public static void main(String[] args) {
         InputStream InputStream = System.in;
         OutputStream OutputStream = System.out;
         InputReader in = new InputReader(InputStream);
         PrintWriter out = new PrintWriter(OutputStream);
 
-        int n = in.nextInt();
+        int Y = in.nextInt();
+        int W = in.nextInt();
 
-        int[] home = new int[n];
-        int[] away = new int[n];
- 
-        int result = 0;
+        int maxYW = 6-Math.max(Y,W)+1;
 
-        for(int i = 0;i<n;i++) {
-            home[i] = in.nextInt();
-            away[i] = in.nextInt();
-        }
+        int common = gcd(maxYW, 6);
 
-        for(int i = 0;i<n;i++) {
-            for(int j = 0;j<n;j++) {
-                if(away[i] == home[j])
-                    result++;
-            }
-        }
+        out.print(maxYW/common);
+        out.print("/");
+        out.print(6/common);
 
-        out.print(result);
-        
+
+      
         out.close();
+    }
+
+    public static int gcd(int a, int b) {
+        if(a==0) return b;
+        return gcd(b%a, a);
     }
 
     static class InputReader {
@@ -64,3 +61,4 @@ public class CF164A {
  
     }
 }
+

@@ -5,35 +5,23 @@ import java.io.PrintWriter;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 import java.io.BufferedReader;
+import java.util.*;
 
-
-public class CF164A {
+public class HorseShoe {
     public static void main(String[] args) {
         InputStream InputStream = System.in;
         OutputStream OutputStream = System.out;
         InputReader in = new InputReader(InputStream);
         PrintWriter out = new PrintWriter(OutputStream);
 
-        int n = in.nextInt();
+        HashSet<Integer> set = new HashSet<>();
 
-        int[] home = new int[n];
-        int[] away = new int[n];
- 
-        int result = 0;
+        set.add(in.nextInt());
+        set.add(in.nextInt());
+        set.add(in.nextInt());
+        set.add(in.nextInt());
 
-        for(int i = 0;i<n;i++) {
-            home[i] = in.nextInt();
-            away[i] = in.nextInt();
-        }
-
-        for(int i = 0;i<n;i++) {
-            for(int j = 0;j<n;j++) {
-                if(away[i] == home[j])
-                    result++;
-            }
-        }
-
-        out.print(result);
+        out.print(4-set.size());
         
         out.close();
     }

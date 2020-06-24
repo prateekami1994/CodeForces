@@ -4,37 +4,35 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
+
+import javax.lang.model.util.ElementScanner6;
+
 import java.io.BufferedReader;
 
 
-public class CF164A {
+public class ColorFulStones {
     public static void main(String[] args) {
         InputStream InputStream = System.in;
         OutputStream OutputStream = System.out;
         InputReader in = new InputReader(InputStream);
         PrintWriter out = new PrintWriter(OutputStream);
 
-        int n = in.nextInt();
+        String s = in.next();
+        String t = in.next();
 
-        int[] home = new int[n];
-        int[] away = new int[n];
- 
-        int result = 0;
+        int i = 0, j = 0;
 
-        for(int i = 0;i<n;i++) {
-            home[i] = in.nextInt();
-            away[i] = in.nextInt();
-        }
-
-        for(int i = 0;i<n;i++) {
-            for(int j = 0;j<n;j++) {
-                if(away[i] == home[j])
-                    result++;
+        while(j<t.length()) {
+            if(s.charAt(i) == t.charAt(j)) {
+                i++;
+                j++;
             }
+            else
+                j++;
         }
-
-        out.print(result);
         
+        out.print(i+1);
+
         out.close();
     }
 
